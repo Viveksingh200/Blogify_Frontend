@@ -4,7 +4,6 @@ import {toast} from 'react-hot-toast';
 export const loginUser = async (data, reset, setUser, setUserToken, navigate, ) =>{
     try {
         const res = await axiosInstance.post('/users/login', data);
-        console.log(res.data);
         const token = res.data?.data?.token;
         const user = res.data?.data?.user;
         localStorage.setItem("token", token);
@@ -27,7 +26,6 @@ export const loginUser = async (data, reset, setUser, setUserToken, navigate, ) 
 export const registerUser = async (data, reset, setUser, setUserToken, navigate) =>{
     try {
         const res = await axiosInstance.post('/users/register', data);
-        console.log(res.data);
         const token = res.data?.data?.token;
         const user = res.data?.data?.user;
         localStorage.setItem("token", token);

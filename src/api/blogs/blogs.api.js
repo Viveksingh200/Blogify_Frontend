@@ -68,21 +68,25 @@ export const createBlogs = async (data, navigate) => {
 };
 
 
-export const updateBlogs = async (data, id, navigate) =>{
+export const updateBlogs = async (formData, id, navigate) => {
   try {
-    const res = await axiosInstance.put(`/blogs/update/${id}`,data, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`
+    const res = await axiosInstance.put(
+      `/blogs/update/${id}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-    });
+    );
 
-    toast.success(res?.data?.message);
-    navigate('/')
+    toast.success(res.data.message);
+    navigate("/");
   } catch (error) {
-     console.log(error);
-    toast.error("Error update blogs.");
+    console.error("UPDATE BLOG ERROR:", error);
+    toast.error("Error updating blog");
   }
-}
+};
 
 export const deleteBlogs = async (id, fetch) =>{
   try {

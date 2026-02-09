@@ -7,6 +7,7 @@ const SingleBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     getSingleBlog(id, setBlog, setLoading);
@@ -36,7 +37,7 @@ const SingleBlog = () => {
           {blog.image && (
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img
-                src={`http://localhost:5000${blog.image}`}
+                src={`${API_URL}${blog.image}`}
                 alt={blog.title}
                 className="w-full h-[420px] object-cover"
               />
